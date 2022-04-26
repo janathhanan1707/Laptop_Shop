@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+        div{
+            padding: 10px;
+        }
+     
+
+    </style>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+</head>
+<body>
+<h1>Registration</h1>
+<form onsubmit="register()">
+        <div>
+            <label for="name">Name :</label>
+            <input type="text" name="name" id="name"
+            placeholder="Enter the name" autofocus required/>
+        </div>
+        <div>
+            <label for="email">E-mail :</label>
+            <input type="text" name="email" id="email"
+            placeholder="Enter the email" required/>
+        </div>
+        <div>
+            <label for="password" > Password :</label>
+            <input type="password" name="password" id="password"
+            placeholder="Enter the password" required/>
+        </div>
+        <div>
+            <label for="moblie.No">Moblie.No :</label>
+            <input type="number" name="number" id="number"
+            placeholder="Enter the Moblie number" required/>
+
+        </div>
+
+        <div>
+            <label for="role">Role:</label>
+            <select id="role">
+                <option value="" disabled>*Select Role*</option>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+               
+            </select>
+        </div>
+        <div>
+            <label for="dob">DOB :</label>
+            <input type="date" name="dob" id="dob"
+            placeholder="Enter your DOB" required/>
+        </div>
+        <div>
+            <label for="gender">Gender :</label> <br>
+            <input type="radio" name="gender" id="M" value="M"/>Male <br>
+            <input type="radio" name="genger" id="F" value="F"/>Female<br>
+        </div>
+        <div>
+            <label for="city">City :</label>
+            <input type="text" name="city" id="city"
+            placeholder="city" required/>
+        </div>
+        <div>
+            
+            <button type="submit" >SUMBIT</button>
+        </div>
+    </form>
+
+
+<script >
+function register(){
+    event.preventDefault();
+const name = document.querySelector("#name").value;
+console.log(name);
+const email = document.querySelector("#email").value;
+console.log(email);
+const password  = document.querySelector("#password").value;
+console.log(password);
+const number = document.querySelector("#number").value;
+console.log(number);
+const DOB = document.querySelector("#dob").value;
+console.log(DOB);
+const city = document.querySelector("#city").value;
+console.log(city);
+const url = "http://localhost:8080/LapWebProject/RegisterUser?name="+name+"&email="+email+"&password="+password+"&number="+number+"&city="+city;
+fetch(url).then(res=>res.text()).then(res=>{
+	let message = res;
+	console.log(message);
+	alert(message);
+});
+}
+
+</script>
+
+</body>
+</html>

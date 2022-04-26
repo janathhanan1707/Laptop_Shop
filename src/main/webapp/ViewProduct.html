@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table,th,td{
+            border: 2px solid black;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viwe Product</title>
+
+</head>
+<body>
+    <h3>View Product</h3>
+
+    <table style="width: 100%;">
+        <tr>
+            <th>id</th>
+            <th>Lap Name</th>
+            <th>Lap Specification</th>
+            <th>Lap Model</th>
+            <th>price</th>
+            <th>Rating</th>
+            <th>Count</th>
+            <th>Add Product</th>
+            
+        </tr>
+       <tbody id = "name">
+       
+       </tbody>
+    </table>
+    <script type="text/javascript">
+    const url = "http://localhost:8080/LapWebProject//ViewProduct";
+    fetch(url).then(res=>res.json()).then(res=>{
+    	let list = res;
+    	console.log(res);
+    	let temp = "";
+    	for(let n of list){
+    		temp = temp+
+    		`<tr>
+    		<td>${n.id}</td>
+    		<td>${n.lapName}</td>
+            <td>${n.lapSpecification}</td>
+            <td>${n.lapModel}</td>
+            <td>${n.price}</td>
+            <td>${n.rating}</td>
+            <td>${n.count}</td>
+            <td><button>Add crat</button></td>
+            </tr>`
+    	}
+    	document.getElementById("name").innerHTML = temp;
+    	 
+    });
+    </script>
+    
+</body>
+</html>

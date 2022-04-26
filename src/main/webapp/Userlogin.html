@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div{
+            padding: 10px;
+        }
+  
+    </style>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+    <form onsubmit ="login()">
+        <div>
+            <label for=" email" > Email :</label>
+            <input type="email" name="email" id="email"
+            placeholder="Enter your email  " autofocus required/>
+        </div>
+        <div>
+            <label for="password"> Password :</label>
+            <input type="password" name="password" id="password"
+            placeholder="Enter your password" required/>
+
+        </div>
+        <div>
+            <button type="submit">LOGIN</button>
+        </div>
+  <script>
+  	function login(){
+  		event.preventDefault();
+  		const email = document.querySelector("#email").value;
+  		console.log(email);
+  		const password = document.querySelector("#password").value;
+  		console.log(password);
+  		const url = "http://localhost:8080/LapWebProject/LoginServlet?email="+email+"&password="+password;
+  		fetch(url).then(res=>res.text()).then(res=>{
+  			let message = res;
+  			console.log(message);
+  			alert(message);
+  		});
+  	}
+  	
+ </script>
+    </form>
+</body>
+</html>
